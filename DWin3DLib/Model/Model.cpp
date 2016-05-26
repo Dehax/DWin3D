@@ -30,8 +30,10 @@ Model::Model(const Model &model)
 }
 
 Model::Model(const wchar_t *name, Mesh *mesh, ARGB color)
-    : m_mesh(mesh), m_color(color), m_name(name)
+    : m_mesh(mesh), m_color(color)
 {
+	setName(name);
+
     m_position = Vec3f(0.0L, 0.0L, 0.0L);
     m_rotation = Vec3f(0.0L, 0.0L, 0.0L);
     m_scale = Vec3f(1.0L, 1.0L, 1.0L);
@@ -45,8 +47,10 @@ Model::Model(const wchar_t *name, Mesh *mesh, ARGB color)
 }
 
 Model::Model(const wchar_t *name, const wchar_t *filePath)
-    : m_mesh(new Mesh()), m_name(name)
+    : m_mesh(new Mesh())
 {
+	setName(name);
+
     m_position = Vec3f(0.0L, 0.0L, 0.0L);
     m_rotation = Vec3f(0.0L, 0.0L, 0.0L);
     m_scale = Vec3f(1.0L, 1.0L, 1.0L);
@@ -194,16 +198,15 @@ Model &Model::operator=(const Model &model)
 
 void Model::parseObjFile(const wchar_t *filePath)
 {
-    QFile modelFile(filePath);
+    std::wifstream modelFile(filePath);
     
-    if (modelFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QTextStream stream(&modelFile);
-        QString line;
+    if (!modelFile.fail()) {
+        wchar_t line[128];
         
-        while (!stream.atEnd()) {
-            line = stream.readLine();
+        while (!modelFile.eof()) {
+			modelFile.getline(line, 128);
             
-            if (line.startsWith("v ", Qt::CaseInsensitive)) {
+            if (wcsstr(line, L"v ") - line == 0) {
                 QStringList vertexData = line.split(' ', QString::SkipEmptyParts);
                 long double x = vertexData[1].toDouble();
                 long double y = vertexData[2].toDouble();
