@@ -142,9 +142,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="DehaxGL.h" />
     <ClInclude Include="DWin3DLib_global.h" />
+    <ClInclude Include="IViewport.h" />
+    <ClInclude Include="Math\Matrix.h" />
+    <ClInclude Include="Math\Vec2i.h" />
+    <ClInclude Include="Math\Vec3f.h" />
+    <ClInclude Include="Math\Vec3i.h" />
+    <ClInclude Include="Math\Vec4f.h" />
+    <ClInclude Include="Model\Face.h" />
+    <ClInclude Include="Model\Mesh.h" />
+    <ClInclude Include="Model\Model.h" />
+    <ClInclude Include="Model\ModelsFactory.h" />
+    <ClInclude Include="Model\Vertex.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="DehaxGL.cpp" />
     <ClCompile Include="DllMain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -159,6 +176,17 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Math\Matrix.cpp" />
+    <ClCompile Include="Math\Vec2i.cpp" />
+    <ClCompile Include="Math\Vec3f.cpp" />
+    <ClCompile Include="Math\Vec3i.cpp" />
+    <ClCompile Include="Math\Vec4f.cpp" />
+    <ClCompile Include="Model\Face.cpp" />
+    <ClCompile Include="Model\Mesh.cpp" />
+    <ClCompile Include="Model\Model.cpp" />
+    <ClCompile Include="Model\ModelsFactory.cpp" />
+    <ClCompile Include="Model\Vertex.cpp" />
+    <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

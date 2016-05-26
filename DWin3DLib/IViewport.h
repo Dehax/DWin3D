@@ -1,0 +1,23 @@
+#ifndef IVIEWPORT_H
+#define IVIEWPORT_H
+
+#include "DWin3DLib_global.h"
+#include "Utils/Utils.h"
+
+class DWIN3DLIB_API IViewport
+{
+public:
+    /**
+     * @brief setPixel Рисует пиксель определённого цвета.
+     * @param x Координата пикселя по горизонтали.
+     * @param y Координата пикселя по вертикали.
+     */
+    virtual void setPixel(const int &x, const int &y, const ARGB &color) = 0;
+    virtual void setSize(const int &width, const int &height) = 0;
+    virtual void clear() = 0;
+    
+    virtual int getWidth() const = 0;
+    virtual int getHeight() const = 0;
+};
+
+#endif // IVIEWPORT_H
