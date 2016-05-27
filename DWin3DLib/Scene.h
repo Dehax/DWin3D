@@ -3,6 +3,7 @@
 #include "DWin3DLib_global.h"
 #include <vector>
 #include <ctime>
+#include <fstream>
 #include "Model/Model.h"
 #include "Model/ModelsFactory.h"
 

@@ -347,9 +347,9 @@ Vec3i DehaxGL::calculateScreenCoordinates(const Vec3f &v)
 {
     int depth = std::numeric_limits<int>::max() / 2;
     
-    int x = (v.x + 1.0L) * m_width * 0.5L;
-    int y = (v.y + 1.0L) * m_height * 0.5L;
-    int z = (v.z + 1.0L) * -depth;
+    int x = (int)((v.x + 1.0L) * m_width * 0.5L);
+    int y = (int)((v.y + 1.0L) * m_height * 0.5L);
+    int z = (int)((v.z + 1.0L) * -depth);
     
     return Vec3i(x, y, z);
 }

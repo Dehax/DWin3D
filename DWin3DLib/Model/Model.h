@@ -5,6 +5,7 @@
 #include "../Math/Matrix.h"
 #include "../Utils/Utils.h"
 #include <fstream>
+#include <sstream>
 
 class DWIN3DLIB_API Model {
 public:

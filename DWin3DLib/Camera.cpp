@@ -138,12 +138,12 @@ void Camera::setHeight(const int &height)
     m_height = height;
 }
 
-int Camera::getZoom() const
+long double Camera::getZoom() const
 {
     return m_zoom;
 }
 
-void Camera::setZoom(const int &zoom)
+void Camera::setZoom(const long double &zoom)
 {
     m_zoom = zoom;
 }

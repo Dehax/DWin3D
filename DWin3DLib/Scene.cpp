@@ -86,21 +86,21 @@ void Scene::removeModel(const int &index)
 
 void Scene::exportToFile(const wchar_t *sceneFilePath)
 {
-    QFile sceneFile(sceneFilePath);
+	std::wofstream sceneFile(sceneFilePath);
     
-    if (!sceneFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    if (sceneFile.fail()) {
         return;
     }
     
-    QTextStream stream(&sceneFile);
+    //QTextStream stream(&sceneFile);
     
     // Write to stream.
     int numberObjects = numObjects();
     
-    stream << numberObjects - 3 << std::endl;
+    sceneFile << numberObjects - 3 << std::endl;
     
     for (int i = 3; i < numberObjects; i++) {
-        stream << m_objects[i];
+		sceneFile << m_objects[i];
     }
     
     sceneFile.close();
@@ -118,21 +118,21 @@ Model &Scene::operator [](const int &i)
 
 void Scene::loadSceneFile(const wchar_t *sceneFilePath)
 {
-    QFile sceneFile(sceneFilePath);
+    std::wifstream sceneFile(sceneFilePath);
     
-    if (!sceneFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    if (sceneFile.fail()) {
         return;
     }
     
-    QTextStream stream(&sceneFile);
-    QString line = stream.readLine();
+	std::wstring line;
+	std::getline(sceneFile, line);
     
-    int numberObjects = line.toInt();
+    int numberObjects = wcstol(line.c_str(), nullptr, 10);
     
     for (int i = 0; i < numberObjects; i++) {
         Model model;
-        stream >> model;
-        stream.readLine();
+		sceneFile >> model;
+		std::getline(sceneFile, line);
         
         addModel(model);
     }

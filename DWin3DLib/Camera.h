@@ -27,8 +27,8 @@ public:
     void setWidth(const int &width);
     int height() const;
     void setHeight(const int &height);
-    int getZoom() const;
-    void setZoom(const int &zoom);
+    long double getZoom() const;
+    void setZoom(const long double &zoom);
     ProjectionType projection() const;
     void setProjection(const ProjectionType &projection);
     Vec3f position() const;
@@ -65,13 +65,13 @@ private:
     const long double DEFAULT_FOV = M_PI_2;
     const long double MIN_FOV = 20.0L;
     const long double MAX_FOV = 150.0L;
-    const int DEFAULT_PARALLEL_ZOOM = 500;
+    const long double DEFAULT_PARALLEL_ZOOM = 500;
     const long double DEFAULT_NEAR_Z = 1.0L;
     const long double DEFAULT_FAR_Z = 500.0L;
     
     int m_width;
     int m_height;
-    int m_zoom;
+    long double m_zoom;
     
     ProjectionType m_projection;
     Vec3f m_position;
