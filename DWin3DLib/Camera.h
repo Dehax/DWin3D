@@ -1,5 +1,4 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#pragma once
 
 #include "DWin3DLib_global.h"
 #include <cmath>
@@ -85,5 +84,3 @@ private:
     long double m_theta;
     long double m_phi;
 };
-
-#endif // CAMERA_H

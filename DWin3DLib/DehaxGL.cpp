@@ -83,7 +83,7 @@ Scene &DehaxGL::scene() const
     return *m_scene;
 }
 
-void DehaxGL::renderModel(Model &model, const RenderModes &renderMode)
+void DehaxGL::renderModel(Model &model, const RenderMode &renderMode)
 {
     Matrix worldMatrix = model.worldMatrix();
     Matrix viewMatrix = m_camera->viewMatrix();
@@ -238,17 +238,17 @@ void DehaxGL::renderModel(Model &model, const RenderModes &renderMode)
     }
 }
 
-void DehaxGL::drawFace(Vec3f &v1, Vec3f &v2, Vec3f &v3, const ARGB &triangleColor, const ARGB &edgeColor, int *zBuffer, const RenderModes &renderMode, bool backfaceCulling)
+void DehaxGL::drawFace(Vec3f &v1, Vec3f &v2, Vec3f &v3, const ARGB &triangleColor, const ARGB &edgeColor, int *zBuffer, const RenderMode &renderMode, bool backfaceCulling)
 {
     Vec3i s1 = calculateScreenCoordinates(v1);
     Vec3i s2 = calculateScreenCoordinates(v2);
     Vec3i s3 = calculateScreenCoordinates(v3);
     
-    if (!backfaceCulling && renderMode.testFlag(DehaxGL::Solid)) {
+    if (!backfaceCulling && renderMode & DehaxGL::Solid) {
         drawTriangle(s1, s2, s3, triangleColor, zBuffer);
     }
     
-    if (renderMode.testFlag(DehaxGL::Wireframe)) {
+    if (renderMode & DehaxGL::Wireframe) {
         drawLine(s1, s2, edgeColor);
         drawLine(s2, s3, edgeColor);
         drawLine(s3, s1, edgeColor);

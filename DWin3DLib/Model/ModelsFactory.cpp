@@ -7,7 +7,7 @@ Model ModelsFactory::box(long double width, long double length, long double heig
     height /= 2.0L;
     
     Mesh *mesh = new Mesh();
-    Model model = Model(QString("(G) box"), mesh, RGBA(255, 0, 0, 255));
+    Model model = Model(L"(G) box", mesh, RGBA(255, 0, 0, 255));
     
     // -Z
     mesh->addVertex(Vertex(-length, -height, -width)); // 0
@@ -42,7 +42,7 @@ Model ModelsFactory::cylinder(long double radius, long double height, int sides)
     height /= 2.0L;
     
     Mesh *mesh = new Mesh();
-    Model model = Model(QString("(G) cylinder"), mesh, RGBA(0, 255, 0, 255));
+    Model model = Model(L"(G) cylinder", mesh, RGBA(0, 255, 0, 255));
     
     int nbVerticesCap = sides + 1;
     
@@ -161,7 +161,7 @@ Model ModelsFactory::lensMount(long double width, long double frontLength, long 
     height /= 2.0L;
     
     Mesh *mesh = new Mesh();
-    Model model = Model(QString("(G) lens mount"), mesh, RGBA(0, 0, 255, 255));
+    Model model = Model(L"(G) lens mount", mesh, RGBA(0, 0, 255, 255));
     
     // -Z
     mesh->addVertex(Vertex(-frontLength, -height, -width)); // 0
@@ -242,7 +242,7 @@ Model ModelsFactory::camera(long double width, long double length, long double h
     }
     
     Mesh *mesh = new Mesh();
-    Model result = Model("Camera", mesh, RGBA(255, 0, 255, 255));
+    Model result = Model(L"Camera", mesh, RGBA(255, 0, 255, 255));
     result.setParameters(width, length, height, radius, lensWidth, lensMountLength, lensMountWidth, marginWidth, sideButtonsHeight, shutterButtonHeight, sideButtonsRadius, shutterButtonRadius);
     
     Model base = ModelsFactory::box(width, length, height);

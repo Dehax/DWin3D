@@ -1,5 +1,4 @@
-#ifndef SCENE_H
-#define SCENE_H
+#pragma once
 
 #include "DWin3DLib_global.h"
 #include <vector>
@@ -35,5 +34,3 @@ private:
     
     std::vector<Model> m_objects;
 };
-
-#endif // SCENE_H

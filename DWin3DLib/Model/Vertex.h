@@ -1,7 +1,6 @@
-#ifndef VERTEX_H
-#define VERTEX_H
+#pragma once
 
-#include "DWin3DLib_global.h"
+#include "../DWin3DLib_global.h"
 #include "../Math/Vec3f.h"
 
 struct DWIN3DLIB_API Vertex
@@ -19,5 +18,3 @@ public:
 private:
     Vec3f m_position;
 };
-
-#endif // VERTEX_H
