@@ -4,6 +4,7 @@
 Model::Model()
 {
 	m_mesh = nullptr;
+	m_name = nullptr;
 }
 
 Model::Model(const Model &model)
@@ -30,7 +31,7 @@ Model::Model(const Model &model)
 }
 
 Model::Model(const wchar_t *name, Mesh *mesh, ARGB color)
-	: m_mesh(mesh), m_color(color)
+	: m_mesh(mesh), m_color(color), m_name(nullptr)
 {
 	setName(name);
 
@@ -47,7 +48,7 @@ Model::Model(const wchar_t *name, Mesh *mesh, ARGB color)
 }
 
 Model::Model(const wchar_t *name, const wchar_t *filePath)
-	: m_mesh(new Mesh())
+	: m_mesh(new Mesh()), m_name(nullptr)
 {
 	setName(name);
 
@@ -136,7 +137,7 @@ void Model::setName(const wchar_t *name)
 
 	m_name = new wchar_t[length + 1];
 
-	wcscpy_s(m_name, length, name);
+	wcscpy_s(m_name, length + 1, name);
 }
 
 //ARGB Model::color() const
